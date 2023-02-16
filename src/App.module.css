@@ -61,17 +61,17 @@
     border: 3px solid #6ce4f9;
     width: 275px;
     height: 70px;
-    margin: 0px 10px 10px 10px;
+    margin: 0 10px 10px 10px;
 }
 
-.settingsButtoms {
+.settingsButtons {
     display: flex;
     justify-content: center;
     align-items: center;
     border: 3px solid #6ce4f9;
     width: 275px;
     height: 70px;
-    margin: 0px 10px 10px 10px;
+    margin: 0 10px 10px 10px;
 }
 
 button {

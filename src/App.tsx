@@ -1,10 +1,13 @@
 import React, {useState, useEffect, ChangeEvent} from 'react';
 import s from './App.module.css';
 import Counter from "./Components/Counter/Counter";
+import Settings from "./Components/Settings/Settings";
 
 type stateBtnSetType = 'Settings' | 'Counter' | ''
 
 function App() {
+
+    let btnNames = ['inc', 'reset', 'set', 'set']
 
     let [stateCounter, setStateCounter] = useState<number>(0)
     let [minValue, setMinValue] = useState<number>(0)
@@ -113,17 +116,16 @@ function App() {
         localStorage.setItem('minValue', JSON.stringify(minValue-1))
     }
 
-
-    let counterStyle = s.container
-    let counterDisplay = s.counterDisplay
-    let settingsStyle = s.disabledAll
-    let settingsDisplay = s.settingsDisplay
+    let final_image: string | number = stateCounter
     let incBtnStyle = `${s.incBtn} ${s.pointer}`
     let resBtnStyle = `${s.resBtn} ${s.pointer}`
     let setBtnStyle = `${s.setBtn} ${s.pointer}`
-    let final_image: string | number = stateCounter
     let final_image_style = s.finalImageDefault
+    let settingsDisplay = s.settingsDisplay
+    let counterDisplay = s.counterDisplay
+    let settingsStyle = s.disabledAll
     let inputMinStyle = s.startInput
+    let counterStyle = s.container
     let inputMaxStyle = s.maxInput
     let disabledSet = false
     let disabledInc = false
@@ -196,36 +198,25 @@ function App() {
                      onClickInc={onClickInc}
                      onClickRes={onClickRes}
                      onClickSet={onClickSet}
+                     btnNames={btnNames}
             />
-            <div className={settingsStyle}>
-                <div className={settingsDisplay}>
-                    <div className={s.maxBlock}>
-                        <div>
-                            <span className={s.maxSpan}>max value : </span>
-                            <input value={maxValue} onChange={onChangeMaxValue} type="number" className={inputMaxStyle}/>
-                        </div>
-                        <div className={s.arrows}>
-                            <button onClick={maxArrowUpClick} className={s.arrowUp}>↑</button>
-                            <button onClick={maxArrowDownClick} className={s.arrowDown}>↓</button>
-                        </div>
-                    </div>
-                    <div className={s.minBlock}>
-                        <div>
-                            <span className={s.startSpan}>start value :</span>
-                            <input value={minValue} onChange={onChangeStartValue} type="number" className={inputMinStyle}/>
-                        </div>
-                        <div className={s.arrows}>
-                            <button onClick={minArrowUpClick} className={s.arrowUp}>↑</button>
-                            <button onClick={minArrowDownClick} className={s.arrowDown}>↓</button>
-                        </div>
-                    </div>
-                </div>
-                <div className={s.settingsButtoms}>
-                    <div onClick={onClickSetSettings}>
-                        <button disabled={disabledSet} className={setBtnStyle}>set</button>
-                    </div>
-                </div>
-            </div>
+            <Settings onChangeStartValue={onChangeStartValue}
+                      onClickSetSettings={onClickSetSettings}
+                      maxArrowDownClick={maxArrowDownClick}
+                      minArrowDownClick={minArrowDownClick}
+                      onChangeMaxValue={onChangeMaxValue}
+                      maxArrowUpClick={maxArrowUpClick}
+                      minArrowUpClick={minArrowUpClick}
+                      settingsDisplay={settingsDisplay}
+                      settingsStyle={settingsStyle}
+                      inputMaxStyle={inputMaxStyle}
+                      inputMinStyle={inputMinStyle}
+                      disabledSet={disabledSet}
+                      setBtnStyle={setBtnStyle}
+                      maxValue={maxValue}
+                      minValue={minValue}
+                      btnNames={btnNames}
+            />
         </div>
     );
 }

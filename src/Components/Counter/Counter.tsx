@@ -1,9 +1,11 @@
 import React from 'react';
-import s from "../../App.module.css";
+import CounterDisplay from "./CounterDisplay";
+import CounterButtons from "./CounterButtons";
 
 type CounterType = {
     final_image: string | number
     final_image_style: string
+    btnNames: Array<string>
     onClickInc: () => void
     onClickRes: () => void
     onClickSet: () => void
@@ -20,20 +22,20 @@ type CounterType = {
 const Counter = (p: CounterType) => {
     return (
         <div className={p.counterStyle}>
-            <div className={p.counterDisplay}>
-                <div className={p.final_image_style}>{p.final_image}</div>
-            </div>
-            <div className={s.counterButtons}>
-                <div onClick={p.onClickInc}>
-                    <button disabled={p.disabledInc} className={p.incBtnStyle}>inc</button>
-                </div>
-                <div onClick={p.onClickRes}>
-                    <button disabled={p.disabledRes} className={p.resBtnStyle}>reset</button>
-                </div>
-                <div onClick={p.onClickSet}>
-                    <button disabled={p.disabledSet} className={p.setBtnStyle}>set</button>
-                </div>
-            </div>
+            <CounterDisplay final_image_style={p.final_image_style}
+                            counterDisplay={p.counterDisplay}
+                            final_image={p.final_image}/>
+            <CounterButtons disabledInc={p.disabledInc}
+                            disabledRes={p.disabledRes}
+                            disabledSet={p.disabledSet}
+                            incBtnStyle={p.incBtnStyle}
+                            resBtnStyle={p.resBtnStyle}
+                            setBtnStyle={p.setBtnStyle}
+                            onClickInc={p.onClickInc}
+                            onClickRes={p.onClickRes}
+                            onClickSet={p.onClickSet}
+                            btnNames={p.btnNames}
+            />
         </div>
     );
 };
