@@ -1,5 +1,6 @@
-import React, {useState, MouseEvent, useEffect, ChangeEvent} from 'react';
+import React, {useState, useEffect, ChangeEvent} from 'react';
 import s from './App.module.css';
+import Counter from "./Components/Counter/Counter";
 
 type stateBtnSetType = 'Settings' | 'Counter' | ''
 
@@ -182,22 +183,20 @@ function App() {
 
     return (
         <div className={s.App}>
-            <div className={counterStyle}>
-                <div className={counterDisplay}>
-                    <div className={final_image_style}>{final_image}</div>
-                </div>
-                <div className={s.counterButtons}>
-                    <div onClick={onClickInc}>
-                        <button disabled={disabledInc} className={incBtnStyle}>inc</button>
-                    </div>
-                    <div onClick={onClickRes}>
-                        <button disabled={disabledRes} className={resBtnStyle}>reset</button>
-                    </div>
-                    <div onClick={onClickSet}>
-                        <button disabled={disabledSet} className={setBtnStyle}>set</button>
-                    </div>
-                </div>
-            </div>
+            <Counter final_image_style={final_image_style}
+                     counterDisplay={counterDisplay}
+                     counterStyle={counterStyle}
+                     disabledInc={disabledInc}
+                     disabledRes={disabledRes}
+                     disabledSet={disabledSet}
+                     incBtnStyle={incBtnStyle}
+                     resBtnStyle={resBtnStyle}
+                     setBtnStyle={setBtnStyle}
+                     final_image={final_image}
+                     onClickInc={onClickInc}
+                     onClickRes={onClickRes}
+                     onClickSet={onClickSet}
+            />
             <div className={settingsStyle}>
                 <div className={settingsDisplay}>
                     <div className={s.maxBlock}>
@@ -213,7 +212,7 @@ function App() {
                     <div className={s.minBlock}>
                         <div>
                             <span className={s.startSpan}>start value :</span>
-                            <input value={minValue} onChange={onChangeStartValue} type="number"className={inputMinStyle}/>
+                            <input value={minValue} onChange={onChangeStartValue} type="number" className={inputMinStyle}/>
                         </div>
                         <div className={s.arrows}>
                             <button onClick={minArrowUpClick} className={s.arrowUp}>↑</button>
