@@ -23,13 +23,13 @@ function App() {
             setStateCounter(newValue)
         }
 
-        let newStartValue = localStorage.getItem('minValue')
+        let newStartValue = localStorage.getItem('minimalValue')
         if (newStartValue) {
             let newValue = JSON.parse(newStartValue)
             setMinValue(newValue)
         }
 
-        let newMaxValue = localStorage.getItem('maxValue')
+        let newMaxValue = localStorage.getItem('maximalValue')
         if (newMaxValue) {
             let newValue = JSON.parse(newMaxValue)
             setMaxValue(newValue)
@@ -53,12 +53,12 @@ function App() {
 
     const onClickSetSettings = () => {
         setStateBtnSet('Counter')
-        let newMaxValue = localStorage.getItem('maxValue')
+        let newMaxValue = localStorage.getItem('maximalValue')
         if (newMaxValue) {
             let newValue = JSON.parse(newMaxValue)
             setStateCounter(newValue)
         }
-        let newStartValue = localStorage.getItem('minValue')
+        let newStartValue = localStorage.getItem('minimalValue')
         if (newStartValue) {
             let newValue = JSON.parse(newStartValue)
             setStateCounter(newValue)
@@ -72,7 +72,7 @@ function App() {
         if (event < 0) {
             setDisplayCounter('Incorrect value!')
         }
-        localStorage.setItem('maxValue', JSON.stringify(event))
+        localStorage.setItem('maximalValue', JSON.stringify(event))
     }
 
     const onChangeStartValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -81,7 +81,7 @@ function App() {
         if (event < 0) {
             setDisplayCounter('Incorrect value!')
         }
-        localStorage.setItem('minValue', JSON.stringify(event))
+        localStorage.setItem('minimalValue', JSON.stringify(event))
     }
 
     const maxArrowUpClick = () => {
@@ -89,7 +89,7 @@ function App() {
         if (maxValue < 0) {
             setDisplayCounter('Incorrect value!')
         }
-        localStorage.setItem('maxValue', JSON.stringify(maxValue+1))
+        localStorage.setItem('maximalValue', JSON.stringify(maxValue+1))
     }
 
     const maxArrowDownClick = () => {
@@ -97,7 +97,7 @@ function App() {
         if (maxValue < 0) {
             setDisplayCounter('Incorrect value!')
         }
-        localStorage.setItem('maxValue', JSON.stringify(maxValue-1))
+        localStorage.setItem('maximalValue', JSON.stringify(maxValue-1))
     }
 
     const minArrowUpClick = () => {
@@ -105,7 +105,7 @@ function App() {
         if (minValue < 0) {
             setDisplayCounter('Incorrect value!')
         }
-        localStorage.setItem('minValue', JSON.stringify(minValue+1))
+        localStorage.setItem('minimalValue', JSON.stringify(minValue+1))
     }
 
     const minArrowDownClick = () => {
@@ -113,7 +113,7 @@ function App() {
         if (minValue < 0) {
             setDisplayCounter('Incorrect value!')
         }
-        localStorage.setItem('minValue', JSON.stringify(minValue-1))
+        localStorage.setItem('minimalValue', JSON.stringify(minValue-1))
     }
 
     let final_image: string | number = stateCounter
